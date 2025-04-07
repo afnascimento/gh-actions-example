@@ -1,6 +1,5 @@
 ## This workflow shows how to publish a docker image to GHCR.
 
-
 name: Publish Docker Image to GHCR
 on:
   push:
@@ -31,5 +30,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: docker-app
           push: true
           tags: docker-app:latest
