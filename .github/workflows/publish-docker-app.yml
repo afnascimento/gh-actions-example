@@ -32,4 +32,6 @@ jobs:
         with:
           context: ./docker-app
           push: true
+          platforms:
+            linux/arm64
           tags: ghcr.io/${{ github.actor }}/docker-app:latest
