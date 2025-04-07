@@ -23,16 +23,9 @@ jobs:
         run: |
           number=$((RANDOM))
           echo "number=$number" >> "$GITHUB_OUTPUT"
-      - name: Assign token to a variable
-        run: |
-          MY_CUSTOM_TOKEN="${{ github.token }}"
-          echo "My custom token is: $MY_CUSTOM_TOKEN"  # Do not do this!
-      - name: Set token as output
-        run: echo "myToken=${{ github.token }}" >> $GITHUB_OUTPUT  # Avoid this!
-      - name: Write token to a file
-        run: |
-          echo "${{ github.token }}" > secret.txt
-          cat secret.txt  # This would reveal the token!
+      - name: Only say Hello World, if in develop"
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Hello World"
       - name: Dump steps context
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
