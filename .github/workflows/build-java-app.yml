@@ -7,6 +7,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    defaults:
+      run:
+        working-directory: java-app
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
