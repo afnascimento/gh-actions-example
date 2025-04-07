@@ -30,6 +30,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: docker-app
+          context: ./docker-app
           push: true
-          tags: docker-app:latest
+          tags: ghcr.io/${{ github.actor }}/docker-app:latest
