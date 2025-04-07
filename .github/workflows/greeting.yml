@@ -1,0 +1,11 @@
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello World!"
