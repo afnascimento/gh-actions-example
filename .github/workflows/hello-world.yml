@@ -1,8 +1,7 @@
 name: hello-world.yml
 on:
   push:
-    branches:
-      - main
+
 jobs:
   hello-world:
     runs-on: ubuntu-latest
