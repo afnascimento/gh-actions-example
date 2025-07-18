@@ -1,5 +1,5 @@
-name: Technical Debt issue
-description: Create a Technical debt issue.
+name: Report a Bug
+description: Report a bug found in the application
 title: "🐞 "
 labels: ["bug"]
 body:
