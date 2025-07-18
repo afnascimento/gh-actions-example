@@ -1,0 +1,11 @@
+name: Technical Debt issue
+description: Create a Technical debt issue.
+title: "[🛠️ Tech Debt]: "
+labels: ["technical-debt"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
