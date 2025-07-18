@@ -1,0 +1,20 @@
+name: Technical Debt issue
+description: Create a Technical debt issue.
+title: "🐞 "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+    validations:
+      required: true
+  - type: dropdown
+    id: environments
+    attributes:
+      label: Which environments are affected?
+      multiple: true
+      options:
+        - Prod
+        - Dev
+        - Local
