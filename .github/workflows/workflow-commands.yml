@@ -33,7 +33,9 @@ jobs:
         id: example_step
         run: echo "result=output_value" >> $GITHUB_OUTPUT
       - name: Use output
-        run: echo "The output was ${{ steps.example_step.outputs.result }}"
+        run: echo "The output was $OUTPUT_VALUE"
+        env:
+          OUTPUT_VALUE: ${{ steps.example_step.outputs.result }}
       # Toolkit functions
       - name: Create messages
         run: |
