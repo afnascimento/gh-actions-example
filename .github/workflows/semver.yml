@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - 'releases/**'
+
+jobs:
+  semver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Increment Semver Action
+        uses: MCKanpolat/auto-semver-action@v2
+        id: versioning
+        with:
+          releaseType: patch 
+          incrementPerCommit: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Next Release Number
+        run: echo ${{ steps.versioning.outputs.version }}
+        
