@@ -1,18 +1,53 @@
 on:
-  milestone:
-    types: [created, closed, edited, opened, deleted]
+  issues:
+    types: [closed]
 
 jobs:
-  milestone:
+  check-milestone-completion:
     runs-on: ubuntu-latest
+    if: github.event.issue.milestone != null
     steps:
-      - name: Milestone event
-        run: echo "The milestone event was triggered by ${{ github.event.action }} action"
-      - name: Show event payload
-        run: echo "${{ toJson(github.event) }}"
-      - name: Show milestone title
-        run: echo "The milestone title is ${{ github.event.milestone.title }}"
-      - name: Show milestone description
-        run: echo "The milestone description is ${{ github.event.milestone.description }}"
-      - name: Show milestone state
-        run: echo "The milestone state is ${{ github.event.milestone.state }}"
+      - name: Check if milestone is complete
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const milestoneNumber = context.payload.issue.milestone.number;
+            const milestoneTitle = context.payload.issue.milestone.title;
+            
+            console.log(`🔍 Issue "${context.payload.issue.title}" was closed`);
+            console.log(`📋 Checking milestone: "${milestoneTitle}"`);
+            
+            // Get all issues for this milestone
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              milestone: milestoneNumber,
+              state: 'all'
+            });
+            
+            // Filter out pull requests (GitHub API includes PRs in issues)
+            const actualIssues = issues.filter(issue => !issue.pull_request);
+            
+            if (actualIssues.length === 0) {
+              console.log(`⚠️  Milestone "${milestoneTitle}" has no issues - skipping`);
+              return;
+            }
+            
+            const openIssues = actualIssues.filter(issue => issue.state === 'open');
+            const closedIssues = actualIssues.filter(issue => issue.state === 'closed');
+            
+            console.log(`📊 Milestone "${milestoneTitle}" status:`);
+            console.log(`   - Total issues: ${actualIssues.length}`);
+            console.log(`   - Open issues: ${openIssues.length}`);
+            console.log(`   - Closed issues: ${closedIssues.length}`);
+            
+            if (openIssues.length === 0) {
+              console.log(`🎉 All issues in milestone "${milestoneTitle}" are now closed!`);
+              console.log(`✅ This milestone can be closed and is ready for completion.`);
+              console.log(`\n🚨 TEAM ALERT 🚨`);
+              console.log(`Milestone "${milestoneTitle}" is ready to be closed!`);
+              console.log(`All issues have been completed. Consider closing this milestone.`);
+              console.log(`\nMilestone URL: ${context.payload.repository.html_url}/milestones`);
+            } else {
+              console.log(`⏳ Milestone "${milestoneTitle}" still has ${openIssues.length} open issue(s)`);
+            }
