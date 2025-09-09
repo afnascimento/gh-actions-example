@@ -1,0 +1,18 @@
+on:
+  milestone:
+    types: [created, closed, edited, opened, deleted]
+
+jobs:
+  milestone:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Milestone event
+        run: echo "The milestone event was triggered by ${{ github.event.action }} action"
+      - name: Show event payload
+        run: echo "${{ toJson(github.event) }}"
+      - name: Show milestone title
+        run: echo "The milestone title is ${{ github.event.milestone.title }}"
+      - name: Show milestone description
+        run: echo "The milestone description is ${{ github.event.milestone.description }}"
+      - name: Show milestone state
+        run: echo "The milestone state is ${{ github.event.milestone.state }}"
