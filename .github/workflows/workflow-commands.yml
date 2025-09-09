@@ -3,8 +3,7 @@
 ## More details on https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions
 
 name: Workflow Commands
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   job1:
