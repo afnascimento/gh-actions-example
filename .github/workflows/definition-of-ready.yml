@@ -18,13 +18,8 @@ jobs:
           NUMBER: ${{ github.event.issue.number }}
           BODY: |
             ### Definition of Ready ✅
-            - [ ] Story has clear business value and is understood by all team members
-            - [ ] All requirements are known and documented, as well as all decisions taken during refinement/planning
-            - [ ] Discussion with the stakeholders has taken place and all questions clarified
-            - [ ] The story provides the smallest vertical slice of value possible (not split by technical layers)
-            - [ ] Acceptance criteria are defined
+            - [ ] Story has clear business value - smallest vertical slice of value possible (not split by technical layers)
+            - [ ] Story is understood by everyone and all requirements and decisions (taken during refinement/planning) are known and documented
+            - [ ] Criteria of acceptance (CoA) are defined
             - [ ] A way to demo the story is defined
-            - [ ] Story is estimated
-            - [ ] Story is small enough to be completed within a single sprint
-            - [ ] Ecosystem dependencies are identified and any possible blockers are addressed
-            - [ ] Test case scenarios or video recordings are provided (if it's a bug)
+            - [ ] Story is estimated and is small enough to be completed within a single sprint
