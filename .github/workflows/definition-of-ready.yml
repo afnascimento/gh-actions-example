@@ -17,9 +17,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           BODY: |
-            <details open>
-            <summary><strong>Definition of Ready ✅</strong></summary>
-            
+            ### Definition of Ready ✅
             - [ ] Story has clear business value and is understood by all team members
             - [ ] All requirements are known and documented, as well as all decisions taken during refinement/planning
             - [ ] Discussion with the stakeholders has taken place and all questions clarified
@@ -30,5 +28,3 @@ jobs:
             - [ ] Story is small enough to be completed within a single sprint
             - [ ] Ecosystem dependencies are identified and any possible blockers are addressed
             - [ ] Test case scenarios or video recordings are provided (if it's a bug)
-            
-            </details>
