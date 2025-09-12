@@ -16,7 +16,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          BODY: >
+          BODY: |
             ### Definition of Ready ✅
             - [ ] Story has clear business value and is understood by all team members
             - [ ] All requirements are known and documented, as well as all decisions taken during refinement/planning
