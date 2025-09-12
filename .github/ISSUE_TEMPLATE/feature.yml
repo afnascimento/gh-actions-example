@@ -2,7 +2,7 @@ name: New Feature
 description: Request a new feature for the application
 title: "New Feature"
 body:
-  - markdown:
+  - type: markdown
     attributes:
       value: |
         ### Definition of Ready ✅
