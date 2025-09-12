@@ -2,6 +2,15 @@ name: New Feature
 description: Request a new feature for the application
 title: "New Feature"
 body:
+  - markdown:
+    attributes:
+      value: |
+        ### Definition of Ready ✅
+        - Story has clear business value - smallest vertical slice of value possible (not split by technical layers)
+        - Story is understood by everyone and all requirements and decisions (taken during refinement/planning) are known and documented
+        - Criteria of acceptance (CoA) are defined
+        - A way to demo the story is defined
+        - Story is estimated and is small enough to be completed within a single sprint
   - type: textarea
     id: description
     attributes:
